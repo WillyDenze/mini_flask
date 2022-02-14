@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 app=Flask(__name__)#creer une instance de l'application
 motdepasse="FenrirCup369/"
 
-app.config['SQLALCHEMY_DATABASE_URI']="postgres://upzryelfcnqcim:3582a1afba28534bbfd6943132d5cf42a1c00ad6baeba98e00dde8ff3d8e83d9@ec2-34-230-110-100.compute-1.amazonaws.com:5432/d1gm78sfdicuh6"
+app.config['SQLALCHEMY_DATABASE_URI']="postgresql://upzryelfcnqcim:3582a1afba28534bbfd6943132d5cf42a1c00ad6baeba98e00dde8ff3d8e83d9@ec2-34-230-110-100.compute-1.amazonaws.com:5432/d1gm78sfdicuh6"
 #connexion a la base de données
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
