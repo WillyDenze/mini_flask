@@ -5,13 +5,13 @@ from flask_cors import CORS, cross_origin
 from flask_migrate import Migrate
 from flask import Flask, jsonify, redirect, render_template, request, url_for, abort
 from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 
 app=Flask(__name__)#creer une instance de l'application
-motdepasse="root"
+motdepasse="FenrirCup369/"
 
-app.config['SQLALCHEMY_DATABASE_URI']="postgresql://postgres:{}@localhost:5432/projetflask".format(motdepasse)
+app.config['SQLALCHEMY_DATABASE_URI']="postgres://upzryelfcnqcim:3582a1afba28534bbfd6943132d5cf42a1c00ad6baeba98e00dde8ff3d8e83d9@ec2-34-230-110-100.compute-1.amazonaws.com:5432/d1gm78sfdicuh6"
 #connexion a la base de données
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -70,13 +70,7 @@ class Livre(db.Model):
         self.editeur=editeur
         self.categorie_id=categorie_id
 
-    def __init__(self,id,isbn,titre,date_publication,auteur,editeur,categorie_id):
-        self.isbn=isbn
-        self.titre=titre
-        self.date_publication=date_publication
-        self.auteur=auteur
-        self.editeur=editeur
-        self.categorie_id=categorie_id
+    
     
     def insert(self):
         db.session.add(self)
@@ -368,7 +362,7 @@ def add_livre():
 ###############################################################
 #view books in a category
 ###############################################################
-@app.route('/livres/categories/<int:id>')
+@app.route('/categories/<int:id>/livres')
 def get_livre_from_categorie(id):
     if exist_id_cat(id):
         books=db.session.query(Livre).join(Categorie).filter(Livre.categorie_id==id)
